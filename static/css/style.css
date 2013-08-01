@@ -1,0 +1,80 @@
+
+body {
+    color: #333333;
+    background-color: #E6E6E1;
+}
+a { color: #666; }
+a:hover { color: #D04526; }
+
+.navbar {
+    border-top: 3px solid #CC0000;
+}
+
+.navbar-search .search-query {
+    border-radius: 6px;
+}
+
+.newsList li {
+    color: #999999;
+}
+.newsList h1 {
+    color: #333333;
+    font-size: 1.2em;
+    line-height: 1.25em;
+    padding-top: 0.5em;
+    padding-bottom: 0;
+    margin-bottom: 0
+}
+.newsList h1 a {
+    color: #333;
+}
+.newsList h1 a:hover  {
+    color: #000;
+}
+.promote {
+    min-width: 6em;
+    display: inline-block;
+}
+.rankNumber {
+    min-width: 2em;
+    display: inline-block;
+}
+
+.bs-masthead {
+  position: relative;
+  padding: 30px 15px;
+  text-align: center;
+}
+.bs-masthead h1 {
+  font-size: 50px;
+  line-height: 1;
+  color: #CC0000;
+}
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/* Download button */
+.bs-masthead .btn-bs {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 18px 24px;
+  font-size: 21px;
+  background-color: #CC0000;
+  color: #FFFFFF;
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) { ... }
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { ... }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { ... }
+
+/* Landscape phones and down */
+@media (max-width: 480px) { ... }

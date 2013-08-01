@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Loogi.ca - Url Shortener</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="humans.txt">
+  <link rel="shortcut icon" href="http://loogica.net/videos/theme/img/favicon.ico" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <style>
+      body { padding-top: 45px; }
+    </style>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script>
+  {% if channel %}
+  var channel = "{{ channel }}";
+  {% else %}
+  var channel = "main";
+  {% endif %}
+  </script>
+  <script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
+  <script src="/static/js/app.js"></script>
+</head>
+
+<body>
+
+{% raw %}
+  <div class="container-narrow">
+    <div class="col-lg-12">
+      <div class="bs-masthead" ng-controller="Controller">
+      <h1>loogi.ca</h1>
+      <p class="lead">Free, tiny, simple and easy deployable url shortener</p>
+      <p><input type="url" ng-model="event.url" class="form-control input-large" name="url" placeholder="url here" required></p>
+      <p><a href="#" ng-click="save(event)" class="btn btn-bs btn-large">short</a></p>
+      <p class="lead"><a href="/{{ saved_shortened }}">http://loogi.ca/{{ saved_shortened }}</a></p>
+    </div>
+    </div>
+  </div> 
+
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endraw %}
