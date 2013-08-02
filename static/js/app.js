@@ -1,35 +1,40 @@
-function Controller($scope, $http) {
-  ZeroClipboard.setDefaults({moviePath: '/static/js/ZeroClipboard.swf'});
-  var zero = new ZeroClipboard($('#link'));
-  $scope.master= {};
-  $scope.urls = {};
-  $scope.info = "click to copy";
+var urlsh = angular.module('urlsh', []);
 
-  $scope.saved = function(data, status, header, config) {
-    $scope.saved_shortened = data.shortened;
-    $scope.saved_url = data.url;
-    $scope.info = "click to copy";
-    $('.link-container').show();
-    $('.link-container').fadeOut(100).fadeIn(2000);
-  };
+urlsh.controller('UrlshController',
+    function ($scope, $http) {
+      ZeroClipboard.setDefaults({moviePath: '/static/js/ZeroClipboard.swf'});
+      var zero = new ZeroClipboard($('#link'));
+      $scope.master = {};
+      $scope.urls = {};
+      $scope.info = "click to copy";
 
-  $scope.save = function(_event) {
-    $scope.master = angular.copy(_event);
-    $http.post('/add_url/', $scope.master).success($scope.saved);
-  };
+      $scope.saved = function(data, status, header, config) {
+        $scope.saved_shortened = data.shortened;
+        $scope.saved_url = data.url;
+        $scope.info = "click to copy";
+        $('.link-container').show();
+        $('.link-container').fadeOut(100).fadeIn(2000);
+      };
 
-  $scope.reset = function() {
-    $scope._event = angular.copy($scope.master);
-    $scope.master= {};
-    $http.get('/urls/').success(function (data, status, header, config) {
-        $scope.urls = data;
-    });
-  };
+      $scope.save = function(_event) {
+        $scope.master = angular.copy(_event);
+        $http.post('/add_url/', $scope.master).success($scope.saved);
+      };
 
-  $scope.copy_complete = function(client, args) {
-    $scope.info = "copied";
-    $scope.$apply();
-  };
+      $scope.reset = function() {
+        $scope._event = angular.copy($scope.master);
+        $scope.master= {};
+        $http.get('/urls/').success(function (data, status, header, config) {
+            $scope.urls = data;
+        });
+      };
 
-  zero.on('complete', $scope.copy_complete);
-}
+      $scope.copy_complete = function(client, args) {
+        $scope.info = "copied";
+        $scope.$apply();
+      };
+
+      zero.on('complete', $scope.copy_complete);
+    }
+);
+
