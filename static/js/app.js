@@ -3,12 +3,12 @@ function Controller($scope, $http) {
   var zero = new ZeroClipboard($('#link'));
   $scope.master= {};
   $scope.urls = {};
+  $scope.info = "click to copy";
 
   $scope.saved = function(data, status, header, config) {
     $scope.saved_shortened = data.shortened;
     $scope.saved_url = data.url;
-    $scope.event = {};
-    $scope.event.url = "url here";
+    $scope.info = "click to copy";
     $('.link-container').show();
     $('.link-container').fadeOut(100).fadeIn(2000);
   };
@@ -25,4 +25,11 @@ function Controller($scope, $http) {
         $scope.urls = data;
     });
   };
+
+  $scope.copy_complete = function(client, args) {
+    $scope.info = "copied";
+    $scope.$apply();
+  };
+
+  zero.on('complete', $scope.copy_complete);
 }

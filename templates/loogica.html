@@ -33,7 +33,8 @@
       <p class="lead">Free, tiny, simple and easy deployable url shortener</p>
       <p><input type="url" ng-model="event.url" class="form-control input-large" name="url" placeholder="url here" required></p>
       <p><a href="#" ng-click="save(event)" class="btn btn-bs btn-large">short</a></p>
-      <p class="lead link-container" style="display:none;"><a id="link" href="#copy" data-clipboard-text="http://loogi.ca/{{ saved_shortened }}">http://loogi.ca/{{ saved_shortened }} (click to copy)</a></p>
+      <p class="lead link-container" style="display:none;">
+      <a id="link" href="#copy" data-clipboard-text="http://loogi.ca/{{ saved_shortened }}">http://loogi.ca/{{ saved_shortened }} ({{ info }})</a></p>
     </div>
     </div>
   </div> 
