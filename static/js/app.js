@@ -1,4 +1,6 @@
 function Controller($scope, $http) {
+  ZeroClipboard.setDefaults({moviePath: '/static/js/ZeroClipboard.swf'});
+  var zero = new ZeroClipboard($('#link'));
   $scope.master= {};
   $scope.urls = {};
 
@@ -7,6 +9,8 @@ function Controller($scope, $http) {
     $scope.saved_url = data.url;
     $scope.event = {};
     $scope.event.url = "url here";
+    $('.link-container').show();
+    $('.link-container').fadeOut(100).fadeIn(2000);
   };
 
   $scope.save = function(_event) {
