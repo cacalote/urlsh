@@ -12,7 +12,6 @@ urlsh.controller('UrlshController',
         $scope.saved_shortened = data.shortened;
         $scope.saved_url = data.url;
         $scope.info = "click to copy";
-        $('.link-container').show();
         $('.link-container').fadeOut(100).fadeIn(2000);
       };
 
