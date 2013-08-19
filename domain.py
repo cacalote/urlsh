@@ -35,9 +35,10 @@ class URLShortner(object):
             raise Exception("Invalid URL")
         self.count += self.seed
         shortened = self._create_url(self.count)
-        self.urls[shortened] = url
+        self.urls[shortened] = {'resolved': 0, 'url': url}
         return dict(shortened=shortened,
                     url=url)
 
     def resolve(self, _id):
+        self.urls[_id]['resolved'] += 1
         return self.urls[_id]
