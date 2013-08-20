@@ -41,4 +41,4 @@ class URLShortner(object):
 
     def resolve(self, _id):
         self.urls[_id]['resolved'] += 1
-        return self.urls[_id]
+        return self.urls[_id]['url']
