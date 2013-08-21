@@ -30,7 +30,7 @@ def add_url():
     try:
         return jsonify(system.add_url(url))
     except Exception as e:
-        return jsonify(dict(error=e))
+        return jsonify(dict(error=str(e)))
 
 @app.route('/<shortened>')
 def resolve(shortened):
