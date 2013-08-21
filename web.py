@@ -20,10 +20,6 @@ MAIN_SITE = "http://loogi.ca"
 def main_site():
     return render_template('loogica.html')
 
-@app.route('/main/')
-def main():
-    return render_template('index.html')
-
 @app.route('/urls/')
 def urls():
     return jsonify(system.urls)
