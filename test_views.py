@@ -32,7 +32,7 @@ class NewsView(unittest.TestCase):
                                               content_type="application/json")
         assert 200 == response.status_code
         assert 'http://loogi.ca' == json.loads(response.data)['url']
-        assert 'shortened' in json.loads(response.data)
+        assert 'shortned' in json.loads(response.data)
 
     def test_add_invalid_url(self):
         data = json.dumps(dict(url='loogica'))
@@ -45,7 +45,7 @@ class NewsView(unittest.TestCase):
         data = json.dumps(dict(url='http://loogi.ca'))
         response = self.app.post('/add_url/', data=data,
                                               content_type="application/json")
-        url_short_id = json.loads(response.data)['shortened']
+        url_short_id = json.loads(response.data)['shortned']
         response = self.app.get('/%s' % url_short_id)
 
         assert 302 == response.status_code
