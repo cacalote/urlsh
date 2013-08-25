@@ -20,6 +20,10 @@ MAIN_SITE = "http://loogi.ca"
 def main_site():
     return render_template('index.html')
 
+@app.route('/ranking')
+def ranking():
+    return render_template('ranking.html')
+
 @app.route('/urls/')
 def urls():
     return jsonify(system.urls)
