@@ -18,7 +18,7 @@ MAIN_SITE = "http://loogi.ca"
 
 @app.route('/')
 def main_site():
-    return render_template('loogica.html')
+    return render_template('index.html')
 
 @app.route('/urls/')
 def urls():
