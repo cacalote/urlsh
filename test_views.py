@@ -26,6 +26,11 @@ class NewsView(unittest.TestCase):
         assert 200 == response.status_code
         assert {} == json.loads(response.data)
 
+    def test_get_ranking(self):
+        response = self.app.get('/ranking')
+        assert 200 == response.status_code
+        assert 'Ranking' in response.data
+
     def test_add_url(self):
         data = json.dumps(dict(url='http://loogi.ca'))
         response = self.app.post('/add_url/', data=data,

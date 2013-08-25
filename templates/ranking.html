@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block main %}
+{% raw %}
+  <div class="container-narrow">
+    <div class="col-lg-12">
+      <div class="" ng-controller="RankningCtrl">
+        <h3>Url Ranking</h3>
+        <table class="table">
+          <thead>
+            <td>Times</td>
+            <td>URL</td>
+          </thead>
+          <tbody>
+            <tr ng-repeat="url in urls">
+              <td>{{ url.resolved }}</td> 
+              <td>{{ url.url }}</td> 
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> 
+{% endraw %}
+{% endblock %}
