@@ -43,7 +43,7 @@ urlsh.controller('RankningCtrl',
     $scope.sorted_urls = function() {
       $http.get('/urls/').success(function (data, status, header, config) {
         $scope.urls = _.sortBy(data, function(item) {
-          return item.resolved;
+          return -item.resolved;
         });
       });
     };
