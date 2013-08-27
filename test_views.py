@@ -39,6 +39,15 @@ class NewsView(unittest.TestCase):
         assert 'http://loogi.ca' == json.loads(response.data)['url']
         assert 'shortned' in json.loads(response.data)
 
+    def test_add_url_custom_shortned(self):
+        data = json.dumps(dict(url='http://loogi.ca', shortned='loogica'))
+        response = self.app.post('/add_url/', data=data,
+                                              content_type="application/json")
+        assert 200 == response.status_code
+        assert 'http://loogi.ca' == json.loads(response.data)['url']
+        assert 'shortned' in json.loads(response.data)
+        assert 'loogica' == json.loads(response.data)['shortned']
+
     def test_add_invalid_url(self):
         data = json.dumps(dict(url='loogica'))
         response = self.app.post('/add_url/', data=data,

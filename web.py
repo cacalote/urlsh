@@ -31,8 +31,9 @@ def urls():
 @app.route('/add_url/', methods=['POST'])
 def add_url():
     url = request.json['url']
+    _custom_shortned = request.json.get('shortned', None)
     try:
-        return jsonify(system.add_url(url))
+        return jsonify(system.add_url(url, shortned=_custom_shortned))
     except Exception as e:
         return jsonify(dict(error=str(e)))
 
