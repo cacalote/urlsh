@@ -30,15 +30,21 @@ class URLShortner(object):
             s.append(HASH_BASE[c])
         return ''.join(s)
 
-    def add_url(self, url):
+    def add_url(self, url, shortned=None):
         if url_regex.match(url) == None:
             raise Exception("Invalid URL")
-        self.count += self.seed
-        shortned = self._create_url(self.count)
+
+        if not shortned:
+            self.count += self.seed
+            shortned = self._create_url(self.count)
+
         self.urls[shortned] = {'resolved': 0, 'url': url}
-        return dict(shortned=shortned,
-                    url=url)
+        return dict(shortned=shortned, url=url)
+
 
     def resolve(self, _id):
-        self.urls[_id]['resolved'] += 1
-        return self.urls[_id]['url']
+        try:
+            self.urls[_id]['resolved'] += 1
+            return self.urls[_id]['url']
+        except KeyError as ke:
+            raise ke

@@ -13,9 +13,23 @@ def test_urlshortner_add_url():
     assert 'http://loogi.ca' in data['url']
     assert 'shortned' in data
 
+def test_urlshortner_add_url():
+    shortner = domain.URLShortner()
+    data = shortner.add_url('http://loogi.ca', shortned='loogica')
+
+    assert shortner.resolve('loogica')
+
 def test_urlshortner_resolve():
     shortner = domain.URLShortner()
     data = shortner.add_url('http://loogi.ca')
     shortner.resolve(data['shortned'])
 
     assert 1 == shortner.urls[data['shortned']]['resolved']
+
+def test_urlshortner_bad_resolve():
+    shortner = domain.URLShortner()
+    try:
+        shortner.resolve('bad')
+        assert False
+    except Exception:
+        assert "ok"
