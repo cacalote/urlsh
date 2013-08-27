@@ -9,7 +9,7 @@ urlsh.controller('UrlshController',
       $scope.info = "click to copy";
 
       $scope.saved = function(data, status, header, config) {
-        $scope.saved_shortened = data.shortened;
+        $scope.saved_shortned = data.shortned;
         $scope.saved_url = data.url;
         $scope.info = "click to copy";
         $('.link-container').fadeOut(100).fadeIn(2000);

@@ -37,10 +37,10 @@ def add_url():
     except Exception as e:
         return jsonify(dict(error=str(e)))
 
-@app.route('/<shortened>')
-def resolve(shortened):
+@app.route('/<shortned>')
+def resolve(shortned):
     try:
-        return redirect(system.resolve(shortened))
+        return redirect(system.resolve(shortned))
     except Exception as e:
         abort(404)
 
