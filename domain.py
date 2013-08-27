@@ -34,7 +34,7 @@ class URLShortner(object):
         if url_regex.match(url) == None:
             raise Exception("Invalid URL")
 
-        if not shortned:
+        if not shortned or shortned == "":
             self.count += self.seed
             shortned = self._create_url(self.count)
 
