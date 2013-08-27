@@ -12,13 +12,13 @@
           </thead>
           <tbody>
             <tr ng-repeat="url in urls">
-              <td>{{ url.resolved }}</td> 
-              <td>{{ url.url }}</td> 
+              <td>{{ url.resolved }}</td>
+              <td><a href="{{ url.url }}">{{ url.url }}</a></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </div> 
+  </div>
 {% endraw %}
 {% endblock %}
