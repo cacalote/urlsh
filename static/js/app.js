@@ -40,9 +40,11 @@ urlsh.controller('UrlshController',
 urlsh.controller('RankningCtrl',
   function ($scope, $http) {
     $scope.urls = {};
+    $scope.clicks = 0;
     $scope.sorted_urls = function() {
       $http.get('/urls/').success(function (data, status, header, config) {
         $scope.urls = _.sortBy(data, function(item) {
+          $scope.clicks += item.resolved;
           return -item.resolved;
         });
       });
